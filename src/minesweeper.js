@@ -1,10 +1,10 @@
 //function: create a board of any size
-const makeBoard = (rows,cols) => {
+const makePlayerBoard = (rows,cols) => {
   let board = [];
-  for (let i = 0; i < rows ; i+=1) {
+  for (let row = 0; row < rows ; row+=1) {
     board.push([]);
-    for (let j = 0; j < cols ; j+=1) {
-      board[i].push(' ');
+    for (let col = 0; col < cols ; col+=1) {
+      board[row].push(' ');
     }
   }
   return board;
@@ -18,9 +18,10 @@ const printBoard = (anyBoard) => {
   }
 };
 
-//create empty board, print it, update some cells, print it again
-let board = makeBoard(3,3);
+/*TEST: create empty board, print it, update some cells, print it again
+let board = makePlayerBoard(3,3);
 printBoard(board);
 board[0][1] = '1';
 board[2][2]= 'B';
 printBoard(board);
+*/
