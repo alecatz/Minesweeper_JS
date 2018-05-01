@@ -36,15 +36,11 @@ const printBoard = board => {
   console.log(board.map(row => row.join('|')).join('\n'));
 };
 
-/*TEST: create empty player board, print it, update some cells, print it again
-let board = makePlayerBoard(3,3);
-printBoard(board);
-board[0][1] = '1';
-board[2][2]= 'B';
-printBoard(board);
-*/
-
-/*TEST: create bomb board and print it
-let board = makeBombBoard(3,3,3);
-printBoard(board);
-*/
+//TEST: print both boards with arbitrary number of rows, columns, bombs
+let rows = 3;
+let cols = 4;
+let bombs =5;
+console.log('Player Board:');
+printBoard(makePlayerBoard(rows,cols));
+console.log('Bomb Board:');
+printBoard(makeBombBoard(rows,cols,bombs));
