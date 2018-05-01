@@ -32,11 +32,8 @@ const makeBombBoard = (rows,cols,bombs) => {
 };
 
 //function: print any board
-const printBoard = (anyBoard) => {
-  console.log('Current board:');
-  for (let i = 0; i < anyBoard.length; i+=1) {
-    console.log(anyBoard[i].join(' | '));
-  }
+const printBoard = board => {
+  console.log(board.map(row => row.join('|')).join('\n'));
 };
 
 /*TEST: create empty player board, print it, update some cells, print it again
