@@ -42,12 +42,24 @@ const numberAdjacentBombs = (bombBoard,row,col) => {
     const adjacentRow = row + offset[0];
     const adjacentCol = col + offset[1];
     if (adjacentRow > 0 && adjacentRow < numberRows && adjacentCol > 0 && adjacentCol < numberCols) {
-      if (bombBoard[adjacentRow][adjacentCol] === 'B'){
+      if (bombBoard[adjacentRow][adjacentCol] === 'B') {
         numberBombs++;
       }
     }
   });
   return numberBombs;
+};
+
+//function: flip cell
+const flipCell = (playerBoard, bombBoard, row, col) => {
+  if (playerBoard[row][col] !== ' ') {
+      console.log('This cell has already been flipped!');
+      return;
+  } else if (bombBoard[row][col] === 'B') {
+    playerBoard[row][col] = 'B';
+  } else {
+    playerBoard[row][col] = numberAdjacentBombs(bombBoard,row,col);
+  }
 };
 
 //function: print any board
