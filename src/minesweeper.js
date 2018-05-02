@@ -12,7 +12,6 @@ const makePlayerBoard = (rows,cols) => {
 
 //function: create bomb board of any size
 //to fix: number of bombs can potentially be larger than number of cells!
-//to fix: bombs can potentially overlap!
 const makeBombBoard = (rows,cols,bombs) => {
   let board = [];
   for (let row = 0; row < rows; row+=1) {
@@ -25,8 +24,10 @@ const makeBombBoard = (rows,cols,bombs) => {
   while (placedBombs < bombs) {
     let randomRow = Math.floor(Math.random() * rows);
     let randomCol = Math.floor(Math.random() * cols);
-    board[randomRow][randomCol] = 'B';
-    placedBombs+=1;
+    if (board[randomRow][randomCol] !== 'B') {
+      board[randomRow][randomCol] = 'B';
+      placedBombs++;
+    }
   }
   return board;
 };
