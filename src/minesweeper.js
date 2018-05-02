@@ -32,6 +32,24 @@ const makeBombBoard = (rows,cols,bombs) => {
   return board;
 };
 
+//function: get number of bombs adiacent to flipped cell
+const numberAdjacentBombs = (bombBoard,row,col) => {
+  const adjacentOffsets = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];
+  const numberRows = bombBoard.length;
+  const numberCols = bombBoard[0].length;
+  let numberBombs = 0;
+  adjacentOffsets.forEach(offset => {
+    const adjacentRow = row + offset[0];
+    const adjacentCol = col + offset[1];
+    if (adjacentRow > 0 && adjacentRow < numberRows && adjacentCol > 0 && adjacentCol < numberCols) {
+      if (bombBoard[adjacentRow][adjacentCol] === 'B'){
+        numberBombs++;
+      }
+    }
+  });
+  return numberBombs;
+};
+
 //function: print any board
 const printBoard = board => {
   console.log(board.map(row => row.join('|')).join('\n'));
