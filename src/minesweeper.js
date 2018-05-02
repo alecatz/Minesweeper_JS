@@ -41,7 +41,7 @@ const numberAdjacentBombs = (bombBoard,row,col) => {
   adjacentOffsets.forEach(offset => {
     const adjacentRow = row + offset[0];
     const adjacentCol = col + offset[1];
-    if (adjacentRow > 0 && adjacentRow < numberRows && adjacentCol > 0 && adjacentCol < numberCols) {
+    if (adjacentRow >= 0 && adjacentRow < numberRows && adjacentCol >= 0 && adjacentCol < numberCols) {
       if (bombBoard[adjacentRow][adjacentCol] === 'B') {
         numberBombs++;
       }
@@ -51,7 +51,7 @@ const numberAdjacentBombs = (bombBoard,row,col) => {
 };
 
 //function: flip cell
-const flipCell = (playerBoard, bombBoard, row, col) => {
+const flipCell = (playerBoard,bombBoard,row,col) => {
   if (playerBoard[row][col] !== ' ') {
       console.log('This cell has already been flipped!');
       return;
@@ -71,7 +71,12 @@ const printBoard = board => {
 let rows = 3;
 let cols = 4;
 let bombs =5;
+let playerBoard = makePlayerBoard(rows,cols);
+let bombBoard = makeBombBoard(rows,cols,bombs);
 console.log('Player Board:');
-printBoard(makePlayerBoard(rows,cols));
+printBoard(playerBoard);
 console.log('Bomb Board:');
-printBoard(makeBombBoard(rows,cols,bombs));
+printBoard(bombBoard);
+flipCell(playerBoard,bombBoard,0,0);
+console.log('Updated Player Board:');
+printBoard(playerBoard);
