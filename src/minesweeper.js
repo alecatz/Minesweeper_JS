@@ -2,7 +2,7 @@
 class Board {
   constructor (rows,cols,bombs) {
     this._bombs = bombs;
-    this._tiles = rows*cols;
+    this._cells = rows*cols;
     this._playerBoard = Board.makePlayerBoard(rows,cols);
     this._bombBoard = Board.makeBombBoard(rows,cols,bombs);
   }
@@ -21,7 +21,7 @@ class Board {
     } else {
       this.playerBoard[row][col] = this.numberAdjacentBombs(row,col);
     }
-    this._tiles--;
+    this._cells--;
   }
 
   //method: get number of bombs adiacent to the flipped cell
@@ -44,7 +44,7 @@ class Board {
 
   //method: checks if all non-bomb cells have been flipped
   hasSafeCells() {
-    return this._tiles === this._bombs;
+    return this._cells === this._bombs;
   }
 
 }
