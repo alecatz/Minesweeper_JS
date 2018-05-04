@@ -6,7 +6,7 @@ class Game {
 
   playMove(row,col) {
     this._board.flipCell(row,col);
-    if (this._board[row][col] === 'B') {
+    if (this._board.playerBoard[row][col] === 'B') {
       console.log('Game Over! Final Board:');
       this._board.printBoard();
     } else if (!this._board.hasSafeCells()) {
@@ -21,7 +21,7 @@ class Game {
 
 //board class
 class Board {
-  constructor (rows,cols,bombs) {
+  constructor(rows,cols,bombs) {
     this._bombs = bombs;
     this._cells = rows*cols;
     this._playerBoard = Board.makePlayerBoard(rows,cols);
@@ -34,13 +34,13 @@ class Board {
 
   //method: check the value of a flipped cell
   flipCell(row,col) {
-    if (this.playerBoard[row][col] !== ' ') {
+    if (this._playerBoard[row][col] !== ' ') {
         console.log('This cell has already been flipped!');
         return;
     } else if (this._bombBoard[row][col] === 'B') {
-      this.playerBoard[row][col] = 'B';
+      this._playerBoard[row][col] = 'B';
     } else {
-      this.playerBoard[row][col] = this.numberAdjacentBombs(row,col);
+      this._playerBoard[row][col] = this.numberAdjacentBombs(row,col);
     }
     this._cells--;
   }
@@ -70,7 +70,7 @@ class Board {
 
   //method: print player board
   printBoard() {
-    console.log(this.playerBoard.map(row => row.join('|')).join('\n'));
+    console.log(this._playerBoard.map(row => row.join('|')).join('\n'));
   }
 
   //method (class): create player board of any size
