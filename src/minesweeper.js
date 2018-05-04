@@ -1,3 +1,12 @@
+//game class
+
+class Game {
+  constructor(rows,cols,bombs) {
+    this._board = new Board(rows,cols,bombs);
+  }
+
+}
+
 //board class
 class Board {
   constructor (rows,cols,bombs) {
