@@ -7,14 +7,16 @@ class Game {
   playMove(row,col) {
     this._board.flipCell(row,col);
     if (this._board[row][col] === 'B') {
-      console.log('Game Over!');
+      console.log('Game Over! Final Board:');
+      this._board.printBoard();
     } else if (!this._board.hasSafeCells()) {
       console.log('Congratulations, You Won!');
     } else {
       console.log('Updated Board:');
+      this._board.printBoard();
     }
-    this._board.printBoard();
   }
+
 }
 
 //board class
@@ -110,27 +112,6 @@ class Board {
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-//TEST: print both boards with arbitrary number of rows, columns, bombs
-let rows = 3;
-let cols = 4;
-let bombs =5;
-let playerBoard = makePlayerBoard(rows,cols);
-let bombBoard = makeBombBoard(rows,cols,bombs);
-console.log('Player Board:');
-printBoard(playerBoard);
-console.log('Bomb Board:');
-printBoard(bombBoard);
-flipCell(playerBoard,bombBoard,0,0);
-console.log('Updated Player Board:');
-printBoard(playerBoard);
+//TEST area
+let g = new Game(3,3,3);
+g.playMove(1,0);
