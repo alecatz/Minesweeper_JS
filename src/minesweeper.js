@@ -47,6 +47,11 @@ class Board {
     return this._cells === this._bombs;
   }
 
+  //method: print player board
+  printBoard() {
+    console.log(this.playerBoard.map(row => row.join('|')).join('\n'));
+  }
+
 }
 
 //function: create player board of any size
@@ -87,10 +92,7 @@ const makeBombBoard = (rows,cols,bombs) => {
 
 
 
-//function: print any board
-const printBoard = board => {
-  console.log(board.map(row => row.join('|')).join('\n'));
-};
+
 
 //TEST: print both boards with arbitrary number of rows, columns, bombs
 let rows = 3;
