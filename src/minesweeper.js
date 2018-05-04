@@ -1,3 +1,17 @@
+//board class
+class Board {
+  constructor (rows,cols,bombs) {
+    this._bombs = bombs;
+    this._tiles = rows*cols;
+    this._playerBoard = Board.makePlayerBoard(rows,cols);
+    this._bombBoard = Board.makeBombBoard(rows,cols,bombs);
+  }
+
+  get playerBoard() {
+    return this._playerBoard;
+  }
+}
+
 //function: create player board of any size
 const makePlayerBoard = (rows,cols) => {
   let board = [];
