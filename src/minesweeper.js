@@ -40,7 +40,12 @@ class Board {
       }
     });
     return numberBombs;
-  };
+  }
+
+  //method: checks if all non-bomb cells have been flipped
+  hasSafeCells() {
+    return this._tiles === this._bombs;
+  }
 
 }
 
