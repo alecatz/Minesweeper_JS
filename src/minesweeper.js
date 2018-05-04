@@ -1,5 +1,4 @@
 //game class
-
 class Game {
   constructor(rows,cols,bombs) {
     this._board = new Board(rows,cols,bombs);
@@ -85,8 +84,11 @@ class Board {
   }
 
   //method (class): create bomb board of any size
-  //to fix: number of bombs can potentially be larger than number of cells!
-  static makeBombBoard(rows,cols,bombs) {
+    static makeBombBoard(rows,cols,bombs) {
+    if (bombs > rows*cols) {
+      console.log('Error! Number of bombs can\'t be higher than number of cells!');
+      return;
+    }
     let board = [];
     for (let row = 0; row < rows; row+=1) {
       board.push([]);
