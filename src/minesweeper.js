@@ -10,6 +10,19 @@ class Board {
   get playerBoard() {
     return this._playerBoard;
   }
+
+  flipCell (row,col) {
+    if (this.playerBoard[row][col] !== ' ') {
+        console.log('This cell has already been flipped!');
+        return;
+    } else if (this._bombBoard[row][col] === 'B') {
+      this.playerBoard[row][col] = 'B';
+    } else {
+      this.playerBoard[row][col] = this.numberAdjacentBombs(row,col);
+    }
+    this._tiles--;
+  }
+
 }
 
 //function: create player board of any size
@@ -64,17 +77,7 @@ const numberAdjacentBombs = (bombBoard,row,col) => {
   return numberBombs;
 };
 
-//function: flip cell
-const flipCell = (playerBoard,bombBoard,row,col) => {
-  if (playerBoard[row][col] !== ' ') {
-      console.log('This cell has already been flipped!');
-      return;
-  } else if (bombBoard[row][col] === 'B') {
-    playerBoard[row][col] = 'B';
-  } else {
-    playerBoard[row][col] = numberAdjacentBombs(bombBoard,row,col);
-  }
-};
+
 
 //function: print any board
 const printBoard = board => {
