@@ -52,19 +52,21 @@ class Board {
     console.log(this.playerBoard.map(row => row.join('|')).join('\n'));
   }
 
+  //method (class): create player board of any size
+  static makePlayerBoard(rows,cols) {
+    let board = [];
+    for (let row = 0; row < rows ; row+=1) {
+      board.push([]);
+      for (let col = 0; col < cols ; col+=1) {
+        board[row].push(' ');
+      }
+    }
+    return board;
+  }
+
 }
 
-//function: create player board of any size
-const makePlayerBoard = (rows,cols) => {
-  let board = [];
-  for (let row = 0; row < rows ; row+=1) {
-    board.push([]);
-    for (let col = 0; col < cols ; col+=1) {
-      board[row].push(' ');
-    }
-  }
-  return board;
-};
+
 
 //function: create bomb board of any size
 //to fix: number of bombs can potentially be larger than number of cells!
