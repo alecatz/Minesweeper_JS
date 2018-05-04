@@ -5,6 +5,17 @@ class Game {
     this._board = new Board(rows,cols,bombs);
   }
 
+  playMove(row,col) {
+    this._board.flipCell(row,col);
+    if (this._board[row][col] === 'B') {
+      console.log('Game Over!');
+    } else if (!this._board.hasSafeCells()) {
+      console.log('Congratulations, You Won!');
+    } else {
+      console.log('Updated Board:');
+    }
+    this._board.printBoard();
+  }
 }
 
 //board class
@@ -53,7 +64,7 @@ class Board {
 
   //method: checks if all non-bomb cells have been flipped
   hasSafeCells() {
-    return this._cells === this._bombs;
+    return this._cells !== this._bombs;
   }
 
   //method: print player board
