@@ -1,26 +1,5 @@
-//game class
-class Game {
-  constructor(rows,cols,bombs) {
-    this._board = new Board(rows,cols,bombs);
-  }
-
-  playMove(row,col) {
-    this._board.flipCell(row,col);
-    if (this._board.playerBoard[row][col] === 'B') {
-      console.log('Game Over! Final Board:');
-      this._board.printBoard();
-    } else if (!this._board.hasSafeCells()) {
-      console.log('Congratulations, You Won!');
-    } else {
-      console.log('Updated Board:');
-      this._board.printBoard();
-    }
-  }
-
-}
-
 //board class
-class Board {
+export class Board {
   constructor(rows,cols,bombs) {
     this._bombs = bombs;
     this._cells = rows*cols;
@@ -111,7 +90,3 @@ class Board {
   }
 
 }
-
-//TEST area
-let g = new Game(3,3,3);
-g.playMove(1,0);
