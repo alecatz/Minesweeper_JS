@@ -7,8 +7,8 @@
 // game.playMove(0, 1);
 // game.playMove(1, 2);
 // When done run `.exit`
-
-import Board from './board.js';
+import { Board } from './board.js';
+//note: not a module (class, not object!) so needs {} import notation
 
 //game class
 class Game {
