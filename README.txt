@@ -19,3 +19,12 @@ To play Minesweeper, we will create instances of MineSweeperGame in command line
     game.playMove(1, 2);
     (...)
 - When done, run `.exit`
+
+
+FEATURE WISHLIST: (potential new additions)
+- Add a timer which lets players know how long it took them to win (or lose).
+- Add recursive flipping: when a tile that isn't touching a bomb (= 0) is flipped,
+  all adjacent non-bomb tiles additionally flip over (perhaps only for large boards?).
+- Add a method to place flags at a tile instead of flipping that tile
+  (i.e. to mark inferred position of bombs).
+  If a tile has a flag on it, it can't be flipped over.
